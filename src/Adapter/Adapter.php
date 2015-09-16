@@ -293,6 +293,9 @@ class Adapter implements AdapterInterface, Profiler\ProfilerAwareInterface
             case 'ibmdb2':
                 $driver = new Driver\IbmDb2\IbmDb2($parameters);
                 break;
+            case 'firebird':
+                $driver = new Driver\Firebird\Firebird($parameters, null, null, $options);
+                break;
             case 'pdo':
             default:
                 if ($driverName == 'pdo' || strpos($driverName, 'pdo') === 0) {

@@ -86,6 +86,12 @@ class AdapterTest extends \PHPUnit_Framework_TestCase
             $this->assertInstanceOf('Zend\Db\Adapter\Driver\Mysqli\Mysqli', $adapter->driver);
             unset($adapter);
         }
+        
+        if (extension_loaded('interbase')) {
+            $adapter = new Adapter(['driver' => 'firebird'], $this->mockPlatform);
+            $this->assertInstanceOf('Zend\Db\Adapter\Driver\Firebird\Firebird', $adapter->driver);
+            unset($adapter);
+        }
 
         if (extension_loaded('pgsql')) {
             $adapter = new Adapter(['driver' => 'pgsql'], $this->mockPlatform);
